@@ -2,7 +2,7 @@
 
 import sys
 
-import BeautifulSoup as bs
+import bs4
 import requests
 
 
@@ -12,10 +12,10 @@ def main():
     try:
         r = requests.get(url)
         if r.ok:
-            page_soup= bs.BeautifulSoup(r.content)
+            page_soup = bs4.BeautifulSoup(r.content, 'lxml')
         r.close()
-    except:
-        print "Could not download"
+    except Exception as e:
+        print "Could not download", e
         sys.exit(1)
 
     # find all episodes list items
