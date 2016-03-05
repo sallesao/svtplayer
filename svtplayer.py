@@ -14,8 +14,8 @@ def main():
         if r.ok:
             page_soup = bs4.BeautifulSoup(r.content, 'lxml')
         r.close()
-    except Exception as e:
-        print "Could not download", e
+    except:
+        print("Could not download")
         sys.exit(1)
 
     # find all episodes list items
@@ -28,10 +28,10 @@ def main():
 
     episodes = {}
     for ep in episode_items:
-        print ep.p.contents[0].strip()
-        print "https:" + str(ep.img['src'])
-        print "http://svtplay.se" + str(ep.a['href'])
-        print "---"
+        print(ep.p.contents[0].strip())
+        print("https:" + str(ep.img['src']))
+        print("http://svtplay.se" + str(ep.a['href']))
+        print("---")
 
 
 if __name__ == "__main__":
