@@ -28,9 +28,14 @@ def main():
 
     episodes = {}
     for ep in episode_items:
-        print(ep.p.contents[0].strip())
-        print("https:" + str(ep.img['src']))
-        print("http://svtplay.se" + str(ep.a['href']))
+        # episode name
+        ep_hdr_class = {'class': 'play_vertical-list__header'}
+        print(ep.find('h2', attrs=ep_hdr_class).a.contents[0])
+
+        print(ep.find('time').contents[0])              # episode length
+        print(ep.p.contents[0].strip())                 # published
+        print("https:" + str(ep.img['src']))            # thumbnail
+        print("http://svtplay.se" + str(ep.a['href']))  # episode page
         print("---")
 
 
